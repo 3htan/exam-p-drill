@@ -1,10 +1,10 @@
 # Exam P Drill
 
-**[▶ Try it live](https://YOUR-USERNAME.github.io/exam-p-drill/)**: runs in your browser, nothing to install.
+**[▶ Try it live](https://3htan.github.io/exam-p-drill/)**: runs in your browser, nothing to install.
 
 Unlimited, timed practice questions for the SOA Exam P (Probability). Every question is generated fresh with random numbers, answered by the code itself, and comes with a full worked solution. A "Weak Spot" mode steers practice toward the topics you miss most.
 
-![Exam P Drill screenshot](docs/screenshot.png)
+![Exam P Drill screenshot](doc/screensh0t.png)
 
 ## What it does
 
@@ -63,11 +63,11 @@ node tests/check.js 10000    # heavier run
 
 ## How to run it
 
-- **Online:** open the [live page](https://YOUR-USERNAME.github.io/exam-p-drill/).
+- **Online:** open the [live page](https://3htan.github.io/exam-p-drill/).
 - **Locally:** download `index.html` and open it in any modern browser. An internet connection is needed for MathJax and the web fonts.
 
 ## About
 
 Built by Ethan Zuniga, applied mathematics student (Pierce College → CSUN), as a study tool for SOA Exam P. Developed with AI assistance as part of coursework for the Google AI Professional Certificate. I chose the topics, reviewed the formulas and solutions, and tested the generators.
 
-[LinkedIn](https://www.linkedin.com/in/YOUR-LINKEDIN/) · MIT License
+[LinkedIn](https://www.linkedin.com/in/ethan-zuniga-476017326) · MIT License
