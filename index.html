@@ -1,0 +1,690 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Exam P Drill</title><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>
+/* Layout: graph-paper ground; question sheet on the left, controls + stats rail on the right; stacks on phones. */
+:root{
+  --bg:#F2F5F9; --grid:rgba(47,79,162,.055); --surface:#FFFFFF; --surface-2:#F7F9FC;
+  --ink:#141B26; --muted:#5A6577; --line:#D8DFE9;
+  --accent:#2F4FA2; --accent-soft:#E4EAF8; --on-accent:#FFFFFF;
+  --good:#1D7A45; --good-soft:#E2F3E9; --bad:#B42D24; --bad-soft:#FBE7E5; --warn:#A86200; --warn-soft:#FBF0DC;
+  --f-display:"IBM Plex Sans Condensed","Arial Narrow",system-ui,sans-serif;
+  --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0E131B; --grid:rgba(142,168,240,.045); --surface:#161D28; --surface-2:#1B2330;
+  --ink:#E5EAF2; --muted:#94A0B3; --line:#2A3445;
+  --accent:#93ABF2; --accent-soft:#1F2A45; --on-accent:#0E131B;
+  --good:#5FC58C; --good-soft:#15301F; --bad:#F2837A; --bad-soft:#3A1A18; --warn:#E8AA4C; --warn-soft:#352813;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0E131B; --grid:rgba(142,168,240,.045); --surface:#161D28; --surface-2:#1B2330;
+  --ink:#E5EAF2; --muted:#94A0B3; --line:#2A3445;
+  --accent:#93ABF2; --accent-soft:#1F2A45; --on-accent:#0E131B;
+  --good:#5FC58C; --good-soft:#15301F; --bad:#F2837A; --bad-soft:#3A1A18; --warn:#E8AA4C; --warn-soft:#352813;
+  color-scheme:dark}
+*{box-sizing:border-box}
+body{background-color:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.55;
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:22px 22px}
+.wrap{max-width:1140px;margin:0 auto;padding-inline:16px;padding-block:20px 56px}
+header.top{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 20px;margin-bottom:18px}
+.brand{font-family:var(--f-display);font-weight:700;font-size:28px;letter-spacing:-.01em;margin:0;line-height:1.1}
+.brand span{color:var(--accent)}
+.pace{font-family:var(--f-mono);font-size:12.5px;color:var(--muted);margin:0}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:22px;align-items:start}
+@media (max-width:880px){.grid{grid-template-columns:minmax(0,1fr)}}
+.sheet,.panel{background:var(--surface);border:1px solid var(--line);border-radius:10px}
+.sheet{overflow:hidden;min-width:0}
+.timebar{height:4px;background:var(--line)}
+.timebar i{display:block;height:100%;background:var(--accent);width:100%;transition:width .25s linear}
+.timebar.low i{background:var(--warn)}
+.timebar.out i{background:var(--bad)}
+.sheet-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:14px 20px;border-bottom:1px solid var(--line);background:var(--surface-2)}
+.meta{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;min-width:0}
+.chip{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.04em;text-transform:uppercase;padding:3px 8px;border-radius:4px;background:var(--accent-soft);color:var(--accent);font-weight:600;white-space:nowrap}
+.qlabel{color:var(--muted);font-size:13.5px}
+.qnum{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+.timer{font-family:var(--f-mono);font-variant-numeric:tabular-nums;font-size:22px;font-weight:600;letter-spacing:.02em}
+.timer.low{color:var(--warn)} .timer.out{color:var(--bad)}
+.timer small{font-size:11px;font-weight:500;color:var(--muted);letter-spacing:.05em;text-transform:uppercase;margin-left:6px}
+.body{padding:20px 20px 22px;display:flex;flex-direction:column;gap:18px}
+.stem{font-size:16px;line-height:1.65;max-width:70ch}
+.stem p{margin:0 0 10px}
+.givens{list-style:none;margin:8px 0 10px;padding:0;display:flex;flex-wrap:wrap;gap:6px 18px}
+table.dist{border-collapse:collapse;font-family:var(--f-mono);font-variant-numeric:tabular-nums;font-size:14px;margin:6px 0 12px}
+table.dist th,table.dist td{border:1px solid var(--line);padding:6px 14px;text-align:center}
+table.dist th{background:var(--surface-2);font-weight:500;color:var(--muted)}
+.tscroll{overflow-x:auto;max-width:100%}
+mjx-container[display="true"]{overflow-x:auto;overflow-y:hidden;max-width:100%;padding:2px 0}
+.choices{display:grid;gap:8px;margin:0;padding:0;list-style:none}
+.choice{width:100%;display:flex;align-items:center;gap:14px;text-align:left;padding:10px 14px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);font:inherit;cursor:pointer;transition:border-color .12s,background .12s}
+.choice:hover:not(:disabled){border-color:var(--accent)}
+.choice:focus-visible,.btn:focus-visible,.seg button:focus-visible,.topic input:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.choice .L{flex:none;width:28px;height:28px;border-radius:6px;display:grid;place-items:center;font-family:var(--f-mono);font-weight:600;font-size:13px;border:1px solid var(--line);color:var(--muted)}
+.choice .V{font-family:var(--f-mono);font-variant-numeric:tabular-nums;font-size:16px}
+.choice.sel{border-color:var(--accent);background:var(--accent-soft)}
+.choice.sel .L{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+.choice:disabled{cursor:default}
+.choice.right{border-color:var(--good);background:var(--good-soft)}
+.choice.right .L{background:var(--good);border-color:var(--good);color:var(--surface)}
+.choice.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.choice.wrong .L{background:var(--bad);border-color:var(--bad);color:var(--surface)}
+.actions{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.btn{font:inherit;font-weight:600;font-size:14.5px;padding:9px 18px;border-radius:7px;border:1px solid var(--accent);background:var(--accent);color:var(--on-accent);cursor:pointer}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn.ghost{background:transparent;color:var(--accent)}
+.btn.danger{background:var(--bad);border-color:var(--bad);color:var(--surface)}
+.btn.small{font-size:13px;padding:6px 12px}
+.keys{font-size:12.5px;color:var(--muted);margin-left:auto}
+.keys kbd{font-family:var(--f-mono);font-size:11.5px;border:1px solid var(--line);border-bottom-width:2px;border-radius:4px;padding:0 5px;background:var(--surface-2)}
+.verdict{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;padding:12px 14px;border-radius:8px;font-weight:600}
+.verdict.ok{background:var(--good-soft);color:var(--good)}
+.verdict.no{background:var(--bad-soft);color:var(--bad)}
+.verdict span{font-family:var(--f-mono);font-weight:500;font-size:13px;opacity:.9}
+.solution h3{font-family:var(--f-display);font-size:17px;margin:0 0 6px;letter-spacing:.01em}
+.solution ol{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:6px;max-width:72ch}
+.solution li{padding-left:4px}
+.solution li::marker{font-family:var(--f-mono);color:var(--muted);font-size:13px}
+.rail{display:flex;flex-direction:column;gap:16px;min-width:0}
+.panel{padding:16px}
+.panel h2{font-family:var(--f-display);font-size:15px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin:0 0 12px;color:var(--muted)}
+.seg{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:8px;padding:3px;gap:3px;background:var(--surface-2)}
+.seg button{font:inherit;font-weight:600;font-size:13.5px;border:0;border-radius:6px;padding:7px 8px;background:transparent;color:var(--muted);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:0 0 0 1px var(--line)}
+.modehint{font-size:12.5px;color:var(--muted);margin:8px 0 12px}
+.topics{display:flex;flex-direction:column;gap:2px}
+.topic{display:grid;grid-template-columns:auto 1fr auto;align-items:start;gap:4px 10px;padding:7px 6px;border-radius:6px;cursor:pointer}
+.topic:hover{background:var(--surface-2)}
+.topic input{margin:3px 0 0;accent-color:var(--accent);width:16px;height:16px}
+.topic b{font-weight:600;font-size:14px;display:block;line-height:1.3}
+.topic small{display:block;color:var(--muted);font-size:12px;line-height:1.35}
+.share{font-family:var(--f-mono);font-size:12px;color:var(--accent);font-variant-numeric:tabular-nums;padding-top:2px}
+.setting{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:12px;padding-top:12px;border-top:1px solid var(--line);font-size:14px}
+select{font:inherit;font-family:var(--f-mono);font-size:13.5px;padding:5px 8px;border-radius:6px;border:1px solid var(--line);background:var(--surface);color:var(--ink)}
+.totals{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
+.totals div{border:1px solid var(--line);border-radius:7px;padding:8px 10px;background:var(--surface-2)}
+.totals b{display:block;font-family:var(--f-mono);font-variant-numeric:tabular-nums;font-size:19px;font-weight:600;line-height:1.2}
+.totals small{color:var(--muted);font-size:11px;letter-spacing:.05em;text-transform:uppercase}
+.trow{display:flex;flex-direction:column;gap:4px;padding:8px 0;border-top:1px solid var(--line)}
+.trow:first-child{border-top:0}
+.trow .nm{display:flex;justify-content:space-between;gap:8px;font-size:13.5px;font-weight:500}
+.trow .nm em{font-style:normal;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--bad);background:var(--bad-soft);border-radius:4px;padding:1px 6px;margin-left:6px;font-weight:600}
+.track{height:7px;border-radius:4px;background:var(--line);overflow:hidden}
+.track i{display:block;height:100%;border-radius:4px}
+.trow .nums{display:flex;justify-content:space-between;font-family:var(--f-mono);font-variant-numeric:tabular-nums;font-size:12px;color:var(--muted)}
+.strip{display:flex;flex-wrap:wrap;gap:3px;margin-top:12px}
+.strip i{width:12px;height:12px;border-radius:2px;background:var(--line)}
+.strip i.c{background:var(--good)} .strip i.w{background:var(--bad)}
+.striplabel{font-size:12px;color:var(--muted);margin-top:12px}
+.empty{font-size:13px;color:var(--muted);margin:0 0 10px}
+.reset{margin-top:14px;padding-top:12px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:13px}
+.reset .q{color:var(--bad);font-weight:600}
+.linkbtn{font:inherit;font-size:13px;background:none;border:0;color:var(--muted);text-decoration:underline;cursor:pointer;padding:0}
+.storage-note{font-size:12px;color:var(--warn);margin:8px 0 0}
+@media (max-width:520px){.body{padding:16px}.sheet-head{padding:12px 16px}.keys{display:none}.stem{font-size:15.5px}}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+<script>
+window.MathJax={
+  tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},
+  svg:{fontCache:'global'},
+  options:{enableMenu:false}
+};
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.js" async></script>
+
+<div class="wrap" id="app">
+  <header class="top">
+    <h1 class="brand">Exam P <span>Drill</span></h1>
+    <p class="pace">SOA Exam P: 30 questions in 3 hours, so 6:00 per question at exam pace</p>
+  </header>
+  <div class="grid">
+    <main class="sheet" id="sheet" aria-live="polite"></main>
+    <aside class="rail">
+      <section class="panel" id="picker"></section>
+      <section class="panel" id="stats"></section>
+    </aside>
+  </div>
+</div>
+
+<script>
+/* ---------- math + random helpers ---------- */
+const tx=String.raw;
+const ri=(a,b)=>a+Math.floor(Math.random()*(b-a+1));
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+const stepR=(a,b,s)=>+(a+s*ri(0,Math.round((b-a)/s))).toFixed(10);
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const sum=a=>a.reduce((s,x)=>s+x,0);
+const fact=n=>{let r=1;for(let i=2;i<=n;i++)r*=i;return r};
+const C=(n,k)=>{if(k<0||k>n)return 0;let r=1;for(let i=1;i<=k;i++)r=r*(n-k+i)/i;return Math.round(r)};
+function erfc(x){const z=Math.abs(x),t=1/(1+0.5*z);const r=t*Math.exp(-z*z-1.26551223+t*(1.00002368+t*(0.37409196+t*(0.09678418+t*(-0.18628806+t*(0.27886807+t*(-1.13520398+t*(1.48851587+t*(-0.82215223+t*0.17087277)))))))));return x>=0?r:2-r}
+const Phi=z=>0.5*erfc(-z/Math.SQRT2);
+const r4=x=>+x.toFixed(4);
+const n=(x,d=4)=>String(+(+x).toFixed(d));       // trimmed number for display
+const f4=x=>x.toFixed(4), f5=x=>x.toFixed(5);
+const money=(x,d=2)=>Number(x).toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d});
+const tc=x=>Number(x).toLocaleString('en-US',{maximumFractionDigits:2}).replace(/,/g,'{,}'); // TeX-safe thousands
+const tm=x=>money(x).replace(/,/g,'{,}');
+const givens=items=>'<ul class="givens">'+items.map(s=>`<li>\\(${s}\\)</li>`).join('')+'</ul>';
+const P=s=>`<p>${s}</p>`;
+const D=s=>`\\[${s}\\]`;
+const ord=k=>k+(k%100>=11&&k%100<=13?'th':['th','st','nd','rd'][k%10]||'th');
+const fiveCells=()=>{const c=[5,5,5,5,5,5];for(let i=0;i<14;i++)c[ri(0,5)]+=5;return c}; // six cells, multiples of 0.05, sum 1
+
+/* ---------- topics ---------- */
+const TOPICS=[
+  {id:'gp',name:'General Probability',blurb:'Sets, conditional probability, Bayes’ theorem'},
+  {id:'disc',name:'Discrete Distributions',blurb:'Binomial, Poisson, geometric, negative binomial'},
+  {id:'cont',name:'Continuous Distributions',blurb:'Uniform, exponential, normal, gamma'},
+  {id:'joint',name:'Joint Distributions',blurb:'Joint, marginal, conditional densities; covariance'},
+  {id:'ins',name:'Insurance Applications',blurb:'Deductibles, policy limits, expected payments'},
+];
+const TNAME=Object.fromEntries(TOPICS.map(t=>[t.id,t.name]));
+
+/* ---------- problem templates: every answer is computed here ---------- */
+const TEMPLATES={
+gp:[
+{id:'gp-venn',label:'Inclusion–exclusion',gen(){
+  let r;do{r=Array.from({length:7},()=>ri(2,14))}while(sum(r)>88);
+  const [m,d,v,md,mv,dv,mdv]=r;
+  const PM=m+md+mv+mdv,PD=d+md+dv+mdv,PV=v+mv+dv+mdv,MD=md+mdv,MV=mv+mdv,DV=dv+mdv,U=sum(r);
+  const S1=PM+PD+PV,S2=MD+MV+DV,h=x=>(x/100).toFixed(2);
+  const none=Math.random()<.5;
+  const stem=P(tx`An employer offers three optional coverages: medical (\(M\)), dental (\(D\)) and vision (\(V\)). For a randomly chosen employee:`)
+    +givens([`P(M)=${h(PM)}`,`P(D)=${h(PD)}`,`P(V)=${h(PV)}`,tx`P(M\cap D)=${h(MD)}`,tx`P(M\cap V)=${h(MV)}`,tx`P(D\cap V)=${h(DV)}`,tx`P(M\cap D\cap V)=${h(mdv)}`])
+    +P(`Calculate the probability that the employee elects <b>${none?'none':'exactly one'}</b> of the three coverages.`);
+  if(none) return {stem,answer:(100-U)/100,dec:2,prob:true,
+    distractors:[(100-U+mdv)/100,(100-U-mdv)/100,U/100,(m+d+v)/100,(md+mv+dv)/100],
+    steps:[tx`Inclusion–exclusion: ${D(tx`P(M\cup D\cup V)=\big[P(M)+P(D)+P(V)\big]-\big[P(M\cap D)+P(M\cap V)+P(D\cap V)\big]+P(M\cap D\cap V)`)}`,
+      D(tx`P(M\cup D\cup V)=${h(S1)}-${h(S2)}+${h(mdv)}=${h(U)}`),
+      tx`None of the three is the complement of the union: ${D(tx`P(\text{none})=1-${h(U)}=${h(100-U)}`)}`]};
+  return {stem,answer:(m+d+v)/100,dec:2,prob:true,
+    distractors:[U/100,(S1-2*S2+mdv)/100,(S1-S2)/100,(md+mv+dv)/100,(100-U)/100],
+    steps:[tx`In \(\sum P(\text{single})\) a region in exactly two sets is counted twice and the triple region three times. In \(\sum P(\text{pairs})\) they are counted once and three times. Removing them gives`+D(tx`P(\text{exactly one})=\sum P(\text{single})-2\sum P(\text{pairs})+3P(M\cap D\cap V)`),
+      D(tx`=${h(S1)}-2(${h(S2)})+3(${h(mdv)})=${h(m+d+v)}`)]};
+}},
+{id:'gp-bayes',label:'Bayes’ theorem',gen(){
+  const p1=ri(4,12)*5,p2=ri(4,Math.min(12,(90-p1)/5))*5,p3=100-p1-p2;
+  const pr=[p1,p2,p3].map(x=>x/100),q=[stepR(.01,.05,.01),stepR(.06,.12,.01),stepR(.15,.30,.01)];
+  const names=['low-risk','moderate-risk','high-risk'],t=ri(0,2);
+  const j=pr.map((p,i)=>p*q[i]),tot=sum(j),post=j.map(x=>x/tot);
+  return {dec:4,prob:true,answer:post[t],
+    stem:P(`An auto insurer classifies drivers as low, moderate or high risk: ${p1}% are low-risk, ${p2}% are moderate-risk and ${p3}% are high-risk. The probability that a driver has at least one accident in a year is ${q[0]}, ${q[1]} and ${q[2]} for the three classes respectively.`)
+      +P(`A randomly selected driver had at least one accident this year. Calculate the probability that the driver is <b>${names[t]}</b>.`),
+    distractors:[j[t],tot,q[t],pr[t],...post.filter((_,i)=>i!==t)],
+    steps:[tx`Let \(A\) be the event of an accident. Law of total probability: ${D(tx`P(A)=(${pr[0]})(${q[0]})+(${pr[1]})(${q[1]})+(${pr[2]})(${q[2]})=${n(j[0],6)}+${n(j[1],6)}+${n(j[2],6)}=${n(tot,6)}`)}`,
+      tx`Bayes’ theorem: ${D(tx`P(\text{${names[t]}}\mid A)=\frac{P(\text{${names[t]}})\,P(A\mid\text{${names[t]}})}{P(A)}=\frac{${n(j[t],6)}}{${n(tot,6)}}=${f4(post[t])}`)}`]};
+}},
+{id:'gp-cond',label:'Conditional probability',gen(){
+  const a=stepR(.3,.7,.05),b=stepR(.2,.6,.05);
+  const lo=+Math.max(.05,a+b-.95).toFixed(2),hi=+(Math.min(a,b)-.05).toFixed(2);
+  const i=stepR(lo,hi,.05),u=+(a+b-i).toFixed(2);
+  const given=Math.random()<.5;
+  const stem=P(tx`For a randomly chosen policyholder, let \(A\) be the event of an auto claim this year and \(B\) the event of a homeowners claim this year. You are given:`)
+    +givens([`P(A)=${a}`,`P(B)=${b}`,tx`P(A\cup B)=${u}`])
+    +P(given?tx`Calculate \(P(A\mid B)\), the probability of an auto claim given a homeowners claim.`:tx`Calculate \(P(A\mid B^c)\), the probability of an auto claim given no homeowners claim.`);
+  const s1=tx`From \(P(A\cup B)=P(A)+P(B)-P(A\cap B)\): ${D(tx`P(A\cap B)=${a}+${b}-${u}=${n(i)}`)}`;
+  if(given) return {stem,dec:4,prob:true,answer:i/b,distractors:[i,i/a,a,(a-i)/(1-b),u/b,b],
+    steps:[s1,D(tx`P(A\mid B)=\frac{P(A\cap B)}{P(B)}=\frac{${n(i)}}{${b}}=${f4(i/b)}`)]};
+  return {stem,dec:4,prob:true,answer:(a-i)/(1-b),distractors:[a-i,i/b,(a-i)/b,a,(a-i)/(1-a)],
+    steps:[s1,D(tx`P(A\cap B^c)=P(A)-P(A\cap B)=${a}-${n(i)}=${n(a-i)}`),
+      D(tx`P(A\mid B^c)=\frac{P(A\cap B^c)}{1-P(B)}=\frac{${n(a-i)}}{${n(1-b)}}=${f4((a-i)/(1-b))}`)]};
+}},
+{id:'gp-indep',label:'Independent events',gen(){
+  const p=[stepR(.05,.4,.05),stepR(.05,.4,.05),stepR(.05,.4,.05)],q=p.map(x=>+(1-x).toFixed(2));
+  const ex=[0,0,0,0];
+  for(let m=0;m<8;m++){let pr=1,k=0;for(let i=0;i<3;i++){if(m>>i&1){pr*=p[i];k++}else pr*=q[i]}ex[k]+=pr}
+  const v=pick(['one','atleast','two']);
+  const ask={one:'exactly one',atleast:'at least one',two:'exactly two'}[v];
+  const stem=P(`Three machines operate independently. The probabilities that they break down during a year are ${p[0]}, ${p[1]} and ${p[2]}. Calculate the probability that <b>${ask}</b> of the machines breaks down during the year.`);
+  const dis=[sum(p),p[0]*p[1]*p[2],ex[1],ex[2],1-ex[0],ex[3]];
+  if(v==='atleast') return {stem,dec:4,prob:true,answer:1-ex[0],distractors:dis,
+    steps:['Use the complement: no breakdowns means all three survive, and independence lets us multiply.',
+      D(tx`P(\text{at least one})=1-(${q[0]})(${q[1]})(${q[2]})=1-${f5(ex[0])}=${f4(1-ex[0])}`)]};
+  if(v==='one') return {stem,dec:4,prob:true,answer:ex[1],distractors:dis,
+    steps:['Add the three disjoint ways one machine fails while the other two survive:',
+      D(tx`(${p[0]})(${q[1]})(${q[2]})+(${q[0]})(${p[1]})(${q[2]})+(${q[0]})(${q[1]})(${p[2]})`),
+      D(tx`=${f5(p[0]*q[1]*q[2])}+${f5(q[0]*p[1]*q[2])}+${f5(q[0]*q[1]*p[2])}=${f4(ex[1])}`)]};
+  return {stem,dec:4,prob:true,answer:ex[2],distractors:dis,
+    steps:['Add the three disjoint ways two machines fail while one survives:',
+      D(tx`(${p[0]})(${p[1]})(${q[2]})+(${p[0]})(${q[1]})(${p[2]})+(${q[0]})(${p[1]})(${p[2]})`),
+      D(tx`=${f5(p[0]*p[1]*q[2])}+${f5(p[0]*q[1]*p[2])}+${f5(q[0]*p[1]*p[2])}=${f4(ex[2])}`)]};
+}},
+],
+disc:[
+{id:'d-binom',label:'Binomial',gen(){
+  const N=ri(6,20),p=stepR(.05,.35,.05),q=n(1-p),k=ri(1,3),pmf=j=>C(N,j)*p**j*(1-p)**(N-j);
+  const atleast=Math.random()<.6;
+  const stem=P(`An insurer covers ${N} properties. Each property independently has probability ${p} of generating a claim this year. Calculate the probability that <b>${atleast?'at least':'exactly'} ${k}</b> properties generate claims.`);
+  const term=j=>tx`P(X=${j})&=\binom{${N}}{${j}}(${p})^{${j}}(${q})^{${N-j}}=${f5(pmf(j))}`;
+  const below=sum(Array.from({length:k},(_,j)=>pmf(j)));
+  if(atleast) return {stem,dec:4,prob:true,answer:1-below,
+    distractors:[1-below-pmf(k),pmf(k),below,1-(1-p)**N,below+pmf(k)],
+    steps:[tx`\(X\sim\text{Binomial}(n=${N},\,p=${p})\). Use the complement \(P(X\ge ${k})=1-P(X\le ${k-1})\).`,
+      D(tx`\begin{aligned}${Array.from({length:k},(_,j)=>term(j)).join('\\\\')}\end{aligned}`),
+      D(tx`P(X\ge ${k})=1-${f5(below)}=${f4(1-below)}`)]};
+  return {stem,dec:4,prob:true,answer:pmf(k),distractors:[p**k*(1-p)**(N-k),below+pmf(k),1-below,C(N,k)*p**k*(1-p)**(N-k+1),pmf(k-1)],
+    steps:[tx`\(X\sim\text{Binomial}(n=${N},\,p=${p})\), so \(P(X=k)=\binom{n}{k}p^k(1-p)^{n-k}\).`,
+      D(tx`P(X=${k})=\binom{${N}}{${k}}(${p})^{${k}}(${q})^{${N-k}}=${C(N,k)}\times${n(p**k,6)}\times${n((1-p)**(N-k),6)}=${f4(pmf(k))}`)]};
+}},
+{id:'d-pois',label:'Poisson',gen(){
+  const L=stepR(.5,4,.1),k=ri(1,3),pm=j=>Math.exp(-L)*L**j/fact(j);
+  const atmost=Math.random()<.5;
+  const cum=m=>sum(Array.from({length:m+1},(_,j)=>pm(j)));
+  const stem=P(`The number of claims a policyholder files in a year has a Poisson distribution with mean ${L}. Calculate the probability that the policyholder files <b>${atmost?'at most':'at least'} ${k}</b> claims.`);
+  const rows=m=>D(tx`\begin{aligned}${Array.from({length:m+1},(_,j)=>tx`P(N=${j})&=e^{-${L}}\frac{${L}^{${j}}}{${j}!}=${f5(pm(j))}`).join('\\\\')}\end{aligned}`);
+  if(atmost) return {stem,dec:4,prob:true,answer:cum(k),distractors:[cum(k-1),pm(k),1-cum(k),cum(k+1),1-cum(k-1)],
+    steps:[tx`\(P(N=j)=e^{-\lambda}\lambda^j/j!\) with \(\lambda=${L}\).`,rows(k),D(tx`P(N\le ${k})=${f4(cum(k))}`)]};
+  return {stem,dec:4,prob:true,answer:1-cum(k-1),distractors:[1-cum(k),cum(k-1),pm(k),cum(k),1-pm(k)],
+    steps:[tx`Use the complement: \(P(N\ge ${k})=1-P(N\le ${k-1})\), with \(P(N=j)=e^{-\lambda}\lambda^j/j!\), \(\lambda=${L}\).`,rows(k-1),D(tx`P(N\ge ${k})=1-${f5(cum(k-1))}=${f4(1-cum(k-1))}`)]};
+}},
+{id:'d-poiscond',label:'Poisson, conditional mean',gen(){
+  const L=stepR(.5,3,.1),e=Math.exp(-L),ans=L/(1-e);
+  return {dec:4,answer:ans,min:0,distractors:[L,L+1,L*(1-e),L*e/(1-e),ans-1,(L-e)/(1-e)],
+    stem:P(tx`The number of claims \(N\) on a policy has a Poisson distribution with mean ${L}. Calculate \(\mathrm{E}[N\mid N\ge 1]\), the expected number of claims given at least one claim.`),
+    steps:[tx`Because \(N=0\) contributes nothing to the mean, \(\mathrm{E}[N]=\mathrm{E}[N\mid N\ge1]\,P(N\ge1)\).`,
+      D(tx`P(N\ge1)=1-e^{-${L}}=${f5(1-e)}`),
+      D(tx`\mathrm{E}[N\mid N\ge1]=\frac{\lambda}{1-e^{-\lambda}}=\frac{${L}}{${f5(1-e)}}=${f4(ans)}`)]};
+}},
+{id:'d-geom',label:'Geometric',gen(){
+  const p=stepR(.05,.3,.05),q=n(1-p);
+  if(Math.random()<.5){
+    const N=ri(3,10),ans=(1-p)**(N-1);
+    return {dec:4,prob:true,answer:ans,distractors:[(1-p)**N,1-ans,p*ans,(1-p)**(N-2),1-(1-p)**N],
+      stem:P(`Items from a production line are inspected one at a time until the first defective item is found. Each item is independently defective with probability ${p}. Calculate the probability that <b>at least ${N}</b> items are inspected.`),
+      steps:[`At least ${N} inspections are needed exactly when the first ${N-1} items are all non-defective.`,
+        D(tx`P(X\ge ${N})=(1-p)^{${N-1}}=(${q})^{${N-1}}=${f4(ans)}`)]};
+  }
+  const ans=(1-p)/(2-p);
+  return {dec:4,prob:true,answer:ans,distractors:[.5,1/(2-p),(1-p)/2,p/(2-p),1-p],
+    stem:P(`Items are inspected one at a time until the first defective item is found. Each item is independently defective with probability ${p}. Calculate the probability that the first defective item is found on an <b>even-numbered</b> inspection.`),
+    steps:[tx`\(P(X=k)=(1-p)^{k-1}p\). Sum over \(k=2,4,6,\dots\), a geometric series with ratio \((1-p)^2\):`,
+      D(tx`\sum_{m\ge1}(1-p)^{2m-1}p=\frac{p(1-p)}{1-(1-p)^2}=\frac{1-p}{2-p}`),
+      D(tx`=\frac{${q}}{${n(2-p)}}=${f4(ans)}`)]};
+}},
+{id:'d-negbin',label:'Negative binomial',gen(){
+  const p=stepR(.1,.5,.05),q=n(1-p),r=ri(2,4),N=ri(r+1,r+8);
+  const ans=C(N-1,r-1)*p**r*(1-p)**(N-r);
+  return {dec:4,prob:true,answer:ans,
+    distractors:[C(N,r)*p**r*(1-p)**(N-r),p**r*(1-p)**(N-r),C(N-1,r-1)*p**(r-1)*(1-p)**(N-r),C(N-1,r)*p**r*(1-p)**(N-r-1)],
+    stem:P(`A sales agent makes calls one at a time. Each call independently results in a sale with probability ${p}. Calculate the probability that the agent’s <b>${ord(r)} sale</b> occurs on the <b>${ord(N)} call</b>.`),
+    steps:[`The ${ord(r)} sale on call ${N} means exactly ${r-1} sale${r-1>1?'s':''} in the first ${N-1} calls, then a sale on call ${N}.`,
+      D(tx`\binom{${N-1}}{${r-1}}p^{${r}}(1-p)^{${N-r}}=${C(N-1,r-1)}\,(${p})^{${r}}(${q})^{${N-r}}=${f4(ans)}`)]};
+}},
+],
+cont:[
+{id:'c-unif',label:'Uniform',gen(){
+  const L=ri(8,20),d=ri(1,Math.floor(L/2)),c=ri(d+1,L-1);
+  const base=`The lifetime of a machine, in years, is uniformly distributed on \\([0,${L}]\\). The machine is still working after ${d} years.`;
+  if(Math.random()<.55) return {dec:4,prob:true,answer:(L-c)/(L-d),distractors:[(L-c)/L,(c-d)/(L-d),(L-d)/L,(L-c)/(L+d),1-(c-d)/L],
+    stem:P(base)+P(`Calculate the probability that it is still working after <b>${c} years</b>.`),
+    steps:[tx`Given \(X>${d}\), \(X\) is uniform on \([${d},${L}]\).`,D(tx`P(X>${c}\mid X>${d})=\frac{${L}-${c}}{${L}-${d}}=\frac{${L-c}}{${L-d}}=${f4((L-c)/(L-d))}`)]};
+  return {dec:2,answer:(L-d)/2,min:0,distractors:[L/2,L/2-d,L-d,(L+d)/2],
+    stem:P(base)+P('Calculate the expected <b>remaining</b> lifetime of the machine, in years.'),
+    steps:[tx`Given \(X>${d}\), \(X\) is uniform on \([${d},${L}]\), so the remaining lifetime \(X-${d}\) is uniform on \([0,${L-d}]\).`,D(tx`\mathrm{E}[X-${d}\mid X>${d}]=\frac{${L-d}}{2}=${n((L-d)/2,2)}`)]};
+}},
+{id:'c-exp',label:'Exponential',gen(){
+  const v=pick(['memo','pct','median']);
+  if(v==='memo'){const th=ri(2,20),s=ri(1,10),t=ri(1,10),ans=Math.exp(-t/th);
+    return {dec:4,prob:true,answer:ans,distractors:[Math.exp(-(s+t)/th),Math.exp(-s/th),1-ans,t/th<1?1-t/th:Math.exp(-th/(s+t))],
+      stem:P(`The time until a component fails, in years, is exponentially distributed with mean ${th}. The component has already lasted ${s} years. Calculate the probability that it lasts at least <b>${t} more</b> years.`),
+      steps:[tx`The exponential distribution is memoryless: \(P(T>${s}+${t}\mid T>${s})=P(T>${t})\).`,D(tx`P(T>${t})=e^{-${t}/${th}}=${f4(ans)}`)]};}
+  if(v==='pct'){const th=ri(2,20),p=pick([.25,.4,.6,.75,.8,.9,.95]),ans=-th*Math.log(1-p);
+    return {dec:3,answer:ans,min:0,distractors:[-th*Math.log(p),th*p,th/(1-p),th*Math.log(1+p)],
+      stem:P(`The time to settle a claim, in months, is exponentially distributed with mean ${th}. Calculate the <b>${Math.round(p*100)}th percentile</b> of the settlement time.`),
+      steps:[tx`Solve \(F(x)=1-e^{-x/${th}}=${p}\).`,D(tx`x=-${th}\ln(1-${p})=-${th}\ln(${n(1-p)})=${n(ans,3)}`)]};}
+  const th=ri(2,12),ans=th*Math.LN2;
+  return {dec:3,answer:ans,min:0,distractors:[th*th*Math.LN2,th,th/2,Math.LN2/th],
+    stem:P(`A random variable \\(T\\) is exponentially distributed with variance ${th*th}. Calculate the <b>median</b> of \\(T\\).`),
+    steps:[tx`For an exponential, \(\mathrm{Var}(T)=\theta^2\), so \(\theta=\sqrt{${th*th}}=${th}\).`,D(tx`1-e^{-m/${th}}=0.5\;\Rightarrow\;m=${th}\ln 2=${n(ans,3)}`)]};
+}},
+{id:'c-norm',label:'Normal',gen(){
+  const mu=ri(20,80)*100,sg=ri(4,30)*25,z1=stepR(.25,2.5,.05),z2=stepR(.25,2.5,.05);
+  const a=+(mu-z1*sg).toFixed(2),b=+(mu+z2*sg).toFixed(2),P2=r4(Phi(z2)),P1=r4(Phi(z1)),ans=P2-(1-P1);
+  return {dec:4,prob:true,answer:ans,distractors:[P2-P1,P2,P1,1-(1-P2)-(1-P1)/2,1-P1],
+    stem:P(`Annual claim costs for a block of policies are normally distributed with mean ${money(mu,0)} and standard deviation ${money(sg,0)}. Calculate the probability that annual claim costs fall between <b>${money(a,a%1?2:0)}</b> and <b>${money(b,b%1?2:0)}</b>.`),
+    steps:[tx`Standardize: \(z=(x-\mu)/\sigma\).`,D(tx`z_1=\frac{${tc(a)}-${tc(mu)}}{${sg}}=-${z1.toFixed(2)},\qquad z_2=\frac{${tc(b)}-${tc(mu)}}{${sg}}=${z2.toFixed(2)}`),
+      D(tx`P=\Phi(${z2.toFixed(2)})-\Phi(-${z1.toFixed(2)})=${f4(P2)}-(1-${f4(P1)})=${f4(ans)}`)]};
+}},
+{id:'c-clt',label:'Central limit theorem',gen(){
+  const N=pick([25,36,49,64,81,100]),mu=ri(5,40)*10,sg=ri(5,30)*10,sd=sg*Math.sqrt(N);
+  const t=Math.round(N*mu+stepR(.5,2.2,.05)*sd),z=+((t-N*mu)/sd).toFixed(2),ans=1-r4(Phi(z));
+  const zb=+((t-N*mu)/(sg*N)).toFixed(2);
+  return {dec:4,prob:true,answer:ans,distractors:[r4(Phi(z)),1-r4(Phi(zb)),1-r4(Phi(z/2))],
+    stem:P(`An insurer has ${N} independent claims. Each claim amount has mean ${mu} and standard deviation ${sg}. Using the normal approximation, calculate the probability that the <b>total</b> of the claims exceeds ${money(t,0)}.`),
+    steps:[tx`For the total \(S\) of ${N} independent claims: ${D(tx`\mathrm{E}[S]=${N}(${mu})=${tc(N*mu)},\qquad \mathrm{SD}(S)=${sg}\sqrt{${N}}=${tc(sd)}`)}`,
+      D(tx`z=\frac{${tc(t)}-${tc(N*mu)}}{${tc(sd)}}=${z.toFixed(2)}`),
+      D(tx`P(S>${tc(t)})\approx1-\Phi(${z.toFixed(2)})=1-${f4(r4(Phi(z)))}=${f4(ans)}`)]};
+}},
+{id:'c-gamma',label:'Gamma',gen(){
+  const al=pick([2,3]),th=ri(1,10)*100,m=stepR(1,4,.5),x=th*m,e=Math.exp(-m);
+  const terms=Array.from({length:al},(_,k)=>e*m**k/fact(k)),ans=sum(terms);
+  return {dec:4,prob:true,answer:ans,distractors:[e,ans+e*m**al/fact(al),1-ans,terms[al-1],ans-terms[al-1]],
+    stem:P(tx`A loss \(X\) has a gamma distribution with \(\alpha=${al}\) and \(\theta=${th}\). Calculate \(P(X>${tc(x)})\).`),
+    steps:[tx`For integer \(\alpha\), \(X\) is the waiting time for the \(\alpha\)-th event of a Poisson process with rate \(1/\theta\). So \(X>x\) means fewer than \(\alpha\) events by time \(x\):`,
+      D(tx`P(X>x)=\sum_{k=0}^{\alpha-1}e^{-x/\theta}\frac{(x/\theta)^k}{k!},\qquad x/\theta=${tc(x)}/${th}=${m}`),
+      D(tx`=e^{-${m}}\left(${Array.from({length:al},(_,k)=>k===0?'1':k===1?`${m}`:tx`\frac{${m}^{${k}}}{${k}!}`).join('+')}\right)=${f4(ans)}`)]};
+}},
+{id:'c-moments',label:'Variance from a density',gen(){
+  const k=ri(1,5),EX=(k+1)/(k+2),EX2=(k+1)/(k+3),ans=EX2-EX*EX;
+  return {dec:4,answer:ans,min:0,distractors:[EX2,EX*EX,EX,EX2-EX,(k+1)/((k+3)*(k+2))],
+    stem:P(tx`The loss ratio \(X\) for a block of business has density \(f(x)=${k+1}x^{${k}}\) for \(0\lt x\lt 1\). Calculate \(\mathrm{Var}(X)\).`),
+    steps:[D(tx`\mathrm{E}[X]=\int_0^1 x\cdot${k+1}x^{${k}}\,dx=\frac{${k+1}}{${k+2}},\qquad \mathrm{E}[X^2]=\int_0^1 x^2\cdot${k+1}x^{${k}}\,dx=\frac{${k+1}}{${k+3}}`),
+      D(tx`\mathrm{Var}(X)=\frac{${k+1}}{${k+3}}-\left(\frac{${k+1}}{${k+2}}\right)^2=${f5(EX2)}-${f5(EX*EX)}=${f4(ans)}`)]};
+}},
+],
+joint:[
+{id:'j-table',label:'Discrete joint distribution',gen(){
+  const c=fiveCells().map(x=>x/100);                    // rows X=0,1 ; cols Y=0,1,2
+  const p=(x,y)=>c[x*3+y],h=v=>v.toFixed(2);
+  const PX1=p(1,0)+p(1,1)+p(1,2),PY=[0,1,2].map(y=>p(0,y)+p(1,y)),EY=PY[1]+2*PY[2],EXY=p(1,1)+2*p(1,2);
+  const stem=P(tx`\(X\) is the number of auto claims and \(Y\) the number of homeowners claims filed by a policyholder in a year. Their joint distribution is:`)
+    +`<div class="tscroll"><table class="dist"><tr><th></th><th>Y = 0</th><th>Y = 1</th><th>Y = 2</th></tr>
+      <tr><th>X = 0</th><td>${h(p(0,0))}</td><td>${h(p(0,1))}</td><td>${h(p(0,2))}</td></tr>
+      <tr><th>X = 1</th><td>${h(p(1,0))}</td><td>${h(p(1,1))}</td><td>${h(p(1,2))}</td></tr></table></div>`;
+  if(Math.random()<.6){const cov=EXY-PX1*EY;
+    return {dec:4,answer:cov,spread:.01,distractors:[EXY,PX1*EY,-cov,EXY-PX1-EY+1,cov+PX1*(1-PX1)],
+      stem:stem+P(tx`Calculate \(\mathrm{Cov}(X,Y)\).`),
+      steps:[D(tx`\mathrm{E}[X]=P(X=1)=${h(p(1,0))}+${h(p(1,1))}+${h(p(1,2))}=${h(PX1)}`),
+        D(tx`\mathrm{E}[Y]=1(${h(PY[1])})+2(${h(PY[2])})=${h(EY)}`),
+        D(tx`\mathrm{E}[XY]=1\cdot1(${h(p(1,1))})+1\cdot2(${h(p(1,2))})=${h(EXY)}`),
+        D(tx`\mathrm{Cov}(X,Y)=\mathrm{E}[XY]-\mathrm{E}[X]\mathrm{E}[Y]=${h(EXY)}-(${h(PX1)})(${h(EY)})=${f4(cov)}`)]};}
+  const ans=EXY/PX1,PX0=1-PX1,E0=(p(0,1)+2*p(0,2))/PX0;
+  return {dec:4,answer:ans,min:0,distractors:[EY,EXY,E0,EXY/PX0,(p(1,1)+p(1,2))/PX1],
+    stem:stem+P(tx`Calculate \(\mathrm{E}[Y\mid X=1]\).`),
+    steps:[D(tx`P(X=1)=${h(p(1,0))}+${h(p(1,1))}+${h(p(1,2))}=${h(PX1)}`),
+      tx`Conditional pmf: \(P(Y=y\mid X=1)=p(1,y)/P(X=1)\).`,
+      D(tx`\mathrm{E}[Y\mid X=1]=\frac{0(${h(p(1,0))})+1(${h(p(1,1))})+2(${h(p(1,2))})}{${h(PX1)}}=\frac{${h(EXY)}}{${h(PX1)}}=${f4(ans)}`)]};
+}},
+{id:'j-expmin',label:'Independent exponentials',gen(){
+  const t1=ri(2,12);let t2;do{t2=ri(2,12)}while(t2===t1);
+  const stem=P(`Two independent components have exponentially distributed lifetimes \\(X\\) and \\(Y\\) with means ${t1} and ${t2} years.`);
+  if(Math.random()<.5){const ans=t2/(t1+t2);
+    return {dec:4,prob:true,answer:ans,distractors:[t1/(t1+t2),.5,Math.exp(-t1/t2),t1/t2>1?t2/t1:t1/t2],
+      stem:stem+P(tx`Calculate \(P(X\lt Y)\), the probability that the first component fails first.`),
+      steps:[tx`Rates: \(\lambda_X=1/${t1}\), \(\lambda_Y=1/${t2}\). For independent exponentials, \(P(X\lt Y)=\dfrac{\lambda_X}{\lambda_X+\lambda_Y}\).`,
+        D(tx`P(X\lt Y)=\frac{1/${t1}}{1/${t1}+1/${t2}}=\frac{${t2}}{${t1}+${t2}}=${f4(ans)}`)]};}
+  const ans=t1*t2/(t1+t2);
+  return {dec:3,answer:ans,min:0,distractors:[(t1+t2)/2,Math.min(t1,t2),t1+t2,Math.sqrt(t1*t2)],
+    stem:stem+P(tx`A system fails as soon as either component fails. Calculate the expected time until the system fails, \(\mathrm{E}[\min(X,Y)]\).`),
+    steps:[tx`\(P(\min(X,Y)>t)=e^{-t/${t1}}e^{-t/${t2}}\), so the minimum is exponential with rate \(1/${t1}+1/${t2}\).`,
+      D(tx`\mathrm{E}[\min(X,Y)]=\frac{1}{1/${t1}+1/${t2}}=\frac{${t1}\cdot${t2}}{${t1}+${t2}}=${n(ans,3)}`)]};
+}},
+{id:'j-varlin',label:'Variance of a sum',gen(){
+  const sx=ri(2,10),sy=ri(2,10);let rho;do{rho=stepR(-.6,.6,.1)}while(rho===0);
+  let a,b;do{a=pick([1,2,3,-1]);b=pick([1,2,3,-1,-2])}while(a<0&&b<0);
+  const cov=rho*sx*sy,ans=a*a*sx*sx+b*b*sy*sy+2*a*b*cov;
+  const co=v=>v===1?'':v===-1?'-':String(v),lin=`${co(a)}X ${b<0?'-':'+'} ${co(Math.abs(b))}Y`;
+  return {dec:2,answer:ans,min:0,distractors:[a*a*sx*sx+b*b*sy*sy,a*a*sx*sx+b*b*sy*sy+a*b*cov,Math.abs(a)*sx*sx+Math.abs(b)*sy*sy+2*a*b*cov,a*a*sx*sx+b*b*sy*sy-2*a*b*cov],
+    stem:P(tx`Random variables \(X\) and \(Y\) have standard deviations ${sx} and ${sy} and correlation coefficient ${rho}. Calculate \(\mathrm{Var}(${lin})\).`),
+    steps:[D(tx`\mathrm{Cov}(X,Y)=\rho\,\sigma_X\sigma_Y=(${rho})(${sx})(${sy})=${n(cov)}`),
+      D(tx`\mathrm{Var}(aX+bY)=a^2\mathrm{Var}(X)+b^2\mathrm{Var}(Y)+2ab\,\mathrm{Cov}(X,Y)`),
+      D(tx`=(${a})^2(${sx*sx})+(${b})^2(${sy*sy})+2(${a})(${b})(${n(cov)})=${n(ans,2)}`)]};
+}},
+{id:'j-xy',label:'Joint density',gen(){
+  const head=P(tx`\(X\) and \(Y\) have joint density \(f(x,y)=x+y\) for \(0\lt x\lt 1,\ 0\lt y\lt 1\).`);
+  const marg=D(tx`f_X(x)=\int_0^1(x+y)\,dy=x+\tfrac12`);
+  if(Math.random()<.5){const x=stepR(.1,.9,.1),num=x/2+1/3,ans=num/(x+.5);
+    return {dec:4,answer:ans,min:0,max:1,distractors:[7/12,num,.5,(x+1/3)/(x+.5),(x/2+1/2)/(x+.5)],
+      stem:head+P(tx`Calculate \(\mathrm{E}[Y\mid X=${x}]\).`),
+      steps:[marg,tx`Conditional density: \(f(y\mid x)=\dfrac{x+y}{x+\tfrac12}\).`,
+        D(tx`\mathrm{E}[Y\mid X=${x}]=\frac{\int_0^1 y(${x}+y)\,dy}{${x}+0.5}=\frac{${x}/2+1/3}{${n(x+.5)}}=\frac{${f5(num)}}{${n(x+.5)}}=${f4(ans)}`)]};}
+  const s=stepR(.1,.9,.1),ans=s*s/2+s/2;
+  return {dec:4,prob:true,answer:ans,distractors:[s*s,s*s/2,s,s**3,s*s/2+s],
+    stem:head+P(tx`Calculate \(P(X\lt ${s})\).`),
+    steps:[marg,D(tx`P(X\lt ${s})=\int_0^{${s}}\left(x+\tfrac12\right)dx=\frac{${s}^2}{2}+\frac{${s}}{2}=${f4(ans)}`)]};
+}},
+],
+ins:[
+{id:'i-unif',label:'Uniform loss: deductible or limit',gen(){
+  const U=ri(4,20)*500,d=ri(1,Math.floor(.6*U/100))*100,u=ri(Math.ceil(.3*U/100),Math.floor(.9*U/100))*100;
+  const v=pick(['loss','pay','limit']);
+  const head=`A loss \\(X\\) is uniformly distributed on \\([0,${tc(U)}]\\).`;
+  if(v==='loss'){const ans=(U-d)**2/(2*U);
+    return {dec:2,money:true,answer:ans,min:0,distractors:[U/2-d,(U-d)/2,(U-d)**2/U,U/2*(1-d/U)],
+      stem:P(head+` An insurance policy pays the loss in excess of a deductible of ${money(d,0)}.`)+P('Calculate the expected payment <b>per loss</b>.'),
+      steps:[D(tx`\mathrm{E}[(X-${tc(d)})_+]=\int_{${tc(d)}}^{${tc(U)}}(x-${tc(d)})\frac{1}{${tc(U)}}\,dx=\frac{(${tc(U)}-${tc(d)})^2}{2(${tc(U)})}`),
+        D(tx`=\frac{${tc(U-d)}^2}{${tc(2*U)}}=${tm(ans)}`)]};}
+  if(v==='pay'){const ans=(U-d)/2;
+    return {dec:2,money:true,answer:ans,min:0,distractors:[(U-d)**2/(2*U),U/2-d,(U+d)/2,U-d],
+      stem:P(head+` An insurance policy pays the loss in excess of a deductible of ${money(d,0)}.`)+P('Calculate the expected payment <b>given that a payment is made</b>.'),
+      steps:[tx`A payment is made only when \(X>${tc(d)}\). Given that, \(X\) is uniform on \([${tc(d)},${tc(U)}]\), so the payment \(X-${tc(d)}\) is uniform on \([0,${tc(U-d)}]\).`,
+        D(tx`\mathrm{E}[X-${tc(d)}\mid X>${tc(d)}]=\frac{${tc(U-d)}}{2}=${tm(ans)}`)]};}
+  const ans=u-u*u/(2*U);
+  return {dec:2,money:true,answer:ans,min:0,distractors:[u/2,u*u/(2*U),U/2,u*(U-u)/U],
+    stem:P(head+` An insurance policy has no deductible and a policy limit of ${money(u,0)}.`)+P('Calculate the expected payment per loss.'),
+    steps:[tx`The payment is \(\min(X,${tc(u)})\).`,
+      D(tx`\mathrm{E}[\min(X,${tc(u)})]=\int_0^{${tc(u)}}\frac{x}{${tc(U)}}\,dx+${tc(u)}\,P(X>${tc(u)})=\frac{${tc(u)}^2}{2(${tc(U)})}+${tc(u)}\cdot\frac{${tc(U-u)}}{${tc(U)}}`),
+      D(tx`=${tm(u*u/(2*U))}+${tm(u*(U-u)/U)}=${tm(ans)}`)]};
+}},
+{id:'i-exp',label:'Exponential loss: deductible and maximum',gen(){
+  const th=ri(5,40)*100,d=ri(1,10)*100,ed=Math.exp(-d/th);
+  if(Math.random()<.5){const ans=th*ed;
+    return {dec:2,money:true,answer:ans,min:0,distractors:[th-d,th*(1-ed),th,th*Math.exp(-2*d/th)],
+      stem:P(`A loss is exponentially distributed with mean ${money(th,0)}. A policy pays the loss in excess of a deductible of ${money(d,0)}.`)+P('Calculate the expected payment per loss.'),
+      steps:[tx`\(\mathrm{E}[(X-d)_+]=\int_d^\infty S(x)\,dx\) with \(S(x)=e^{-x/\theta}\):`,
+        D(tx`\int_{${tc(d)}}^\infty e^{-x/${tc(th)}}dx=${tc(th)}\,e^{-${tc(d)}/${tc(th)}}=${tm(ans)}`)]};}
+  const m=ri(2,20)*500,em=Math.exp(-(d+m)/th),ans=th*(ed-em);
+  return {dec:2,money:true,answer:ans,min:0,distractors:[th*ed,th*(1-Math.exp(-m/th)),th*em,th-d],
+    stem:P(`A loss is exponentially distributed with mean ${money(th,0)}. A policy has a deductible of ${money(d,0)} and pays at most ${money(m,0)} per loss.`)+P('Calculate the expected payment per loss.'),
+    steps:[tx`The payment is \(\min\big((X-${tc(d)})_+,\,${tc(m)}\big)\), whose mean is the integral of \(S(x)\) from the deductible to deductible plus maximum:`,
+      D(tx`\int_{${tc(d)}}^{${tc(d+m)}}e^{-x/${tc(th)}}dx=${tc(th)}\left(e^{-${tc(d)}/${tc(th)}}-e^{-${tc(d+m)}/${tc(th)}}\right)`),
+      D(tx`=${tc(th)}(${f5(ed)}-${f5(em)})=${tm(ans)}`)]};
+}},
+{id:'i-disc',label:'Discrete loss with deductible',gen(){
+  const xs=[0,500,1000,2500,5000,10000],ps=fiveCells().map(x=>x/100),d=pick([250,500,1000,2000]);
+  const pay=xs.map(x=>Math.max(x-d,0)),ans=sum(pay.map((y,i)=>y*ps[i])),EX=sum(xs.map((x,i)=>x*ps[i])),Pp=sum(ps.filter((_,i)=>xs[i]>d));
+  return {dec:2,money:true,answer:ans,min:0,distractors:[EX-d,EX,sum(xs.map((x,i)=>x>d?x*ps[i]:0)),ans/Pp],
+    stem:P(`The loss on a policy has the distribution below. The policy has a deductible of ${money(d,0)}.`)
+      +`<div class="tscroll"><table class="dist"><tr><th>Loss</th>${xs.map(x=>`<td>${money(x,0)}</td>`).join('')}</tr><tr><th>Probability</th>${ps.map(p=>`<td>${p.toFixed(2)}</td>`).join('')}</tr></table></div>`
+      +P('Calculate the expected payment per loss.'),
+    steps:[tx`Payment is \(\max(X-${tc(d)},0)\): ${pay.map((y,i)=>`${money(xs[i],0)} → ${money(y,0)}`).join(', ')}.`,
+      D(tx`\mathrm{E}[\text{payment}]=${pay.map((y,i)=>[y,i]).filter(([y])=>y>0).map(([y,i])=>tx`${tc(y)}(${ps[i].toFixed(2)})`).join('+')}=${tm(ans)}`)]};
+}},
+{id:'i-dedred',label:'Deductible from a target reduction',gen(){
+  const th=ri(5,40)*100,r=pick([.1,.15,.2,.25,.3,.35,.4,.5]),ans=-th*Math.log(1-r);
+  return {dec:2,money:true,answer:ans,min:0,distractors:[r*th,-th*Math.log(r),th*r/(1-r),th*Math.log(1+r)],
+    stem:P(`A loss is exponentially distributed with mean ${money(th,0)}. An insurer wants to impose a deductible that reduces the expected payment per loss by ${Math.round(r*100)}% compared with no deductible.`)+P('Calculate the deductible.'),
+    steps:[tx`With deductible \(d\), \(\mathrm{E}[(X-d)_+]=\theta e^{-d/\theta}\). Set it equal to \(${n(1-r)}\theta\):`,
+      D(tx`e^{-d/${tc(th)}}=${n(1-r)}\;\Rightarrow\;d=-${tc(th)}\ln(${n(1-r)})=${tm(ans)}`)]};
+}},
+],
+};
+
+/* ---------- answer choices: five, sorted ascending like the exam ---------- */
+function buildChoices(p){
+  const unit=10**-p.dec,fmt=v=>{if(Math.abs(v)<unit/2)v=0;return p.money?money(v,p.dec):v.toFixed(p.dec)};
+  const gap=Math.max(Math.abs(p.answer)*.035,2*unit);
+  const vals=[p.answer],keys=new Set([fmt(p.answer)]);
+  const add=v=>{
+    if(vals.length>=5||!isFinite(v))return;
+    if(p.prob&&(v<0||v>1))return;
+    if(p.min!=null&&v<p.min)return; if(p.max!=null&&v>p.max)return;
+    const k=fmt(v); if(keys.has(k)||k===fmt(0)&&p.answer!==0&&p.prob)return;
+    if(vals.some(u=>Math.abs(u-v)<gap))return;
+    keys.add(k);vals.push(v);
+  };
+  shuffle(p.distractors||[]).forEach(add);
+  shuffle([.12,-.12,.2,-.2,.3,-.3,.45,-.45,.65]).forEach(f=>add(p.answer*(1+f)));
+  const sp=p.spread||Math.max(Math.abs(p.answer)*.12,5*unit);
+  for(let k=1,g=0;vals.length<5&&g<400;g++,k=k>0?-k:1-k) add(p.answer+k*sp);
+  const sorted=vals.slice().sort((a,b)=>a-b);
+  return {choices:sorted.map(fmt),correctIndex:sorted.indexOf(p.answer)};
+}
+
+/* ---------- persistence ---------- */
+const KEY='exam-p-drill-v1';
+let storageOK=true;
+const blankStats=()=>Object.fromEntries(TOPICS.map(t=>[t.id,{n:0,c:0,t:0}]));
+function defaults(){return {settings:{minutes:6,mode:'practice',topics:TOPICS.map(t=>t.id)},stats:blankStats(),history:[]}}
+function load(){
+  const d=defaults();
+  try{const raw=localStorage.getItem(KEY);if(raw){const s=JSON.parse(raw);
+    return {settings:{...d.settings,...(s.settings||{})},stats:{...d.stats,...(s.stats||{})},history:Array.isArray(s.history)?s.history:[]};}}
+  catch(e){storageOK=false}
+  return d;
+}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S));storageOK=true}catch(e){storageOK=false}}
+let S=load();
+
+/* ---------- topic selection ---------- */
+function activeTopics(){const t=S.settings.topics.filter(id=>TEMPLATES[id]);return t.length?t:TOPICS.map(x=>x.id)}
+function weights(){
+  const ids=activeTopics(),w={};
+  if(S.settings.mode!=='weak'){ids.forEach(id=>w[id]=1/ids.length);return w}
+  let tot=0;
+  ids.forEach(id=>{const s=S.stats[id],acc=(s.c+1)/(s.n+2);w[id]=(1-acc)**2+.02;tot+=w[id]});
+  ids.forEach(id=>w[id]/=tot);return w;
+}
+
+/* ---------- question flow ---------- */
+let Q=null,lastTpl=null,qCount=0;
+function newQuestion(){
+  const w=weights();let r=Math.random(),topic=null;
+  for(const id in w){r-=w[id];if(r<=0){topic=id;break}}
+  topic=topic||Object.keys(w).pop();
+  const pool=TEMPLATES[topic].filter(t=>t.id!==lastTpl),tpl=pick(pool.length?pool:TEMPLATES[topic]);
+  let p=null;
+  for(let i=0;i<8&&!(p&&isFinite(p.answer));i++){try{p=tpl.gen()}catch(e){console.error(e);p=null}}
+  const ch=buildChoices(p);
+  lastTpl=tpl.id;qCount++;
+  Q={topic,tpl:tpl.id,label:tpl.label,...p,...ch,start:Date.now(),limit:S.settings.minutes*60000,selected:null,done:false};
+  renderQuestion();
+}
+function submit(timedOut){
+  if(!Q||Q.done)return;
+  if(!timedOut&&Q.selected==null)return;
+  Q.done=true;Q.timedOut=!!timedOut;
+  Q.elapsed=Math.min(Date.now()-Q.start,Q.limit);
+  Q.correct=!timedOut&&Q.selected===Q.correctIndex;
+  const st=S.stats[Q.topic];st.n++;if(Q.correct)st.c++;st.t+=Q.elapsed/1000;
+  S.history.push({t:Q.topic,k:Q.tpl,c:Q.correct?1:0,s:Math.round(Q.elapsed/1000),ts:Date.now()});
+  if(S.history.length>300)S.history=S.history.slice(-300);
+  save();renderQuestion();renderStats();renderPicker();
+  document.getElementById('nextBtn')?.focus({preventScroll:true});
+}
+
+/* ---------- rendering ---------- */
+const L='ABCDE';
+const mmss=ms=>{const s=Math.max(0,Math.ceil(ms/1000));return Math.floor(s/60)+':'+String(s%60).padStart(2,'0')};
+let mjChain=Promise.resolve();
+function typeset(el){const M=window.MathJax;if(!M||!M.typesetPromise)return;
+  mjChain=mjChain.then(()=>{M.typesetClear&&M.typesetClear([el]);return M.typesetPromise([el])}).catch(()=>{})}
+
+function renderQuestion(){
+  const el=document.getElementById('sheet');
+  const chs=Q.choices.map((c,i)=>{
+    let cls='choice';
+    if(Q.done){if(i===Q.correctIndex)cls+=' right';else if(i===Q.selected)cls+=' wrong'}
+    else if(i===Q.selected)cls+=' sel';
+    return `<li><button type="button" class="${cls}" data-i="${i}" id="choice-${i}" ${Q.done?'disabled':''} aria-pressed="${i===Q.selected}"><span class="L">${L[i]}</span><span class="V">${c}</span></button></li>`;
+  }).join('');
+  let after='';
+  if(Q.done){
+    const ans=`${L[Q.correctIndex]} (${Q.choices[Q.correctIndex]})`;
+    const v=Q.correct?`<div class="verdict ok">Correct. ${ans} <span>in ${mmss(Q.elapsed)}</span></div>`
+      :Q.timedOut?`<div class="verdict no">Time’s up. The answer is ${ans}.</div>`
+      :Q.selected==null?`<div class="verdict no">Revealed. The answer is ${ans}.</div>`
+      :`<div class="verdict no">Not quite. You chose ${L[Q.selected]}; the answer is ${ans}. <span>${mmss(Q.elapsed)}</span></div>`;
+    after=v+`<div class="solution"><h3>Worked solution</h3><ol>${Q.steps.map(s=>`<li>${s}</li>`).join('')}</ol></div>
+      <div class="actions"><button type="button" class="btn" id="nextBtn">Next question</button><span class="keys"><kbd>Enter</kbd> next</span></div>`;
+  }
+  el.innerHTML=`<div class="timebar" id="tbar"><i></i></div>
+    <div class="sheet-head"><div class="meta"><span class="chip">${TNAME[Q.topic]}</span><span class="qlabel">${Q.label}</span><span class="qnum">Q${qCount}${S.settings.mode==='weak'?' · Weak Spot':''}</span></div>
+      <div class="timer" id="timer" role="timer"></div></div>
+    <div class="body">
+      <div class="stem">${Q.stem}</div>
+      <ol class="choices">${chs}</ol>
+      ${Q.done?after:`<div class="actions"><button type="button" class="btn" id="checkBtn" ${Q.selected==null?'disabled':''}>Check answer</button><button type="button" class="btn ghost" id="revealBtn">Reveal answer</button><span class="keys"><kbd>A</kbd>–<kbd>E</kbd> choose · <kbd>Enter</kbd> check</span></div>`}
+    </div>`;
+  tick();typeset(el);
+}
+function selectChoice(i){
+  if(!Q||Q.done)return;Q.selected=i;
+  document.querySelectorAll('.choice').forEach(b=>{const on=+b.dataset.i===i;b.classList.toggle('sel',on);b.setAttribute('aria-pressed',on)});
+  const cb=document.getElementById('checkBtn');if(cb)cb.disabled=false;
+}
+function tick(){
+  if(!Q)return;
+  const t=document.getElementById('timer'),bar=document.getElementById('tbar');if(!t)return;
+  if(Q.done){t.className='timer';t.innerHTML=`${mmss(Q.elapsed)}<small>used</small>`;bar.className='timebar';bar.firstChild.style.width=(100*Q.elapsed/Q.limit)+'%';return}
+  const left=Q.limit-(Date.now()-Q.start);
+  const st=left<=0?'out':left<=60000?'low':'';
+  t.className='timer '+st;t.innerHTML=`${mmss(left)}<small>left</small>`;
+  bar.className='timebar '+st;bar.firstChild.style.width=Math.max(0,100*left/Q.limit)+'%';
+  if(left<=0)submit(true);
+}
+setInterval(tick,250);
+
+function renderPicker(){
+  const w=weights(),weak=S.settings.mode==='weak',sel=new Set(S.settings.topics);
+  document.getElementById('picker').innerHTML=`<h2>Practice</h2>
+    <div class="seg" role="group" aria-label="Mode">
+      <button type="button" id="mode-practice" data-mode="practice" aria-pressed="${!weak}">Practice</button>
+      <button type="button" id="mode-weak" data-mode="weak" aria-pressed="${weak}">Weak Spot</button>
+    </div>
+    <p class="modehint">${weak?'Questions are drawn more often from your lowest-accuracy topics. Share of upcoming questions:':'Questions are drawn evenly from the topics you select.'}</p>
+    <div class="topics">${TOPICS.map(t=>`<label class="topic" for="t-${t.id}"><input type="checkbox" id="t-${t.id}" data-topic="${t.id}" ${sel.has(t.id)?'checked':''}><span><b>${t.name}</b><small>${t.blurb}</small></span><span class="share">${sel.has(t.id)&&w[t.id]!=null?Math.round(w[t.id]*100)+'%':''}</span></label>`).join('')}</div>
+    <div class="setting"><label for="minutes">Time per question</label>
+      <select id="minutes">${[1,2,3,4,5,6,7,8,10,12,15].map(m=>`<option value="${m}" ${+S.settings.minutes===m?'selected':''}>${m}:00${m===6?' (exam pace)':''}</option>`).join('')}</select></div>`;
+}
+
+function renderStats(){
+  const st=S.stats,tot=TOPICS.reduce((a,t)=>({n:a.n+st[t.id].n,c:a.c+st[t.id].c,t:a.t+st[t.id].t}),{n:0,c:0,t:0});
+  const tried=TOPICS.filter(t=>st[t.id].n>0);
+  let weakest=null;
+  if(tried.length>=2){weakest=tried.reduce((a,b)=>(st[a.id].c+1)/(st[a.id].n+2)<=(st[b.id].c+1)/(st[b.id].n+2)?a:b).id}
+  const col=a=>a<.5?'var(--bad)':a<.7?'var(--warn)':'var(--good)';
+  const rows=TOPICS.map(t=>{const s=st[t.id],acc=s.n?s.c/s.n:0;
+    return `<div class="trow"><div class="nm"><span>${t.name}${t.id===weakest?'<em>Weakest</em>':''}</span></div>
+      <div class="track"><i style="width:${s.n?Math.max(2,acc*100):0}%;background:${col(acc)}"></i></div>
+      <div class="nums"><span>${s.n?`${s.c}/${s.n} · ${Math.round(acc*100)}%`:'No attempts'}</span><span>${s.n?'avg '+mmss(s.t/s.n*1000):''}</span></div></div>`}).join('');
+  const recent=S.history.slice(-30);
+  document.getElementById('stats').innerHTML=`<h2>Your stats</h2>
+    <div class="totals"><div><b>${tot.n}</b><small>Answered</small></div><div><b>${tot.n?Math.round(100*tot.c/tot.n)+'%':'–'}</b><small>Accuracy</small></div><div><b>${tot.n?mmss(tot.t/tot.n*1000):'–'}</b><small>Avg time</small></div></div>
+    ${tot.n?'':'<p class="empty">Answer a question to start tracking accuracy and time by topic. Progress is saved in this browser.</p>'}
+    ${rows}
+    ${recent.length?`<div class="striplabel">Last ${recent.length} answers, oldest first</div><div class="strip">${recent.map(h=>`<i class="${h.c?'c':'w'}" title="${TNAME[h.t]}: ${h.c?'correct':'missed'}, ${mmss(h.s*1000)}"></i>`).join('')}</div>`:''}
+    ${storageOK?'':'<p class="storage-note">This browser is blocking storage, so progress will not be saved after you close the page.</p>'}
+    <div class="reset" id="resetBox">${tot.n?'<button type="button" class="linkbtn" id="resetBtn">Reset progress</button>':''}</div>`;
+}
+
+/* ---------- events ---------- */
+document.addEventListener('click',e=>{
+  const c=e.target.closest('.choice');if(c&&!c.disabled){selectChoice(+c.dataset.i);return}
+  const id=e.target.closest('button')?.id;
+  if(id==='checkBtn')submit(false);
+  else if(id==='revealBtn'){if(Q&&!Q.done){Q.selected=null;submit(true);Q.timedOut=false;renderQuestion()}}
+  else if(id==='nextBtn')newQuestion();
+  else if(e.target.closest('[data-mode]')){S.settings.mode=e.target.closest('[data-mode]').dataset.mode;save();renderPicker();if(Q&&!Q.done&&Q.selected==null&&Date.now()-Q.start<15000)newQuestion();else renderQuestion()}
+  else if(id==='resetBtn'){document.getElementById('resetBox').innerHTML='<span class="q">Erase all answers and stats?</span><button type="button" class="btn danger small" id="resetYes">Erase</button><button type="button" class="btn ghost small" id="resetNo">Cancel</button>'}
+  else if(id==='resetNo')renderStats();
+  else if(id==='resetYes'){S.stats=blankStats();S.history=[];save();renderStats();renderPicker()}
+});
+document.addEventListener('change',e=>{
+  if(e.target.dataset.topic){
+    const on=[...document.querySelectorAll('[data-topic]')].filter(x=>x.checked).map(x=>x.dataset.topic);
+    if(!on.length){e.target.checked=true;return}
+    S.settings.topics=on;save();renderPicker();
+    if(Q&&!Q.done&&!on.includes(Q.topic)&&Q.selected==null)newQuestion();
+  }
+  if(e.target.id==='minutes'){S.settings.minutes=+e.target.value;save();if(Q&&!Q.done){Q.limit=S.settings.minutes*60000;tick()}}
+});
+document.addEventListener('keydown',e=>{
+  if(e.target.closest('input,select,textarea')||e.metaKey||e.ctrlKey||e.altKey)return;
+  const k=e.key.toLowerCase(),i='abcde'.indexOf(k),num='12345'.indexOf(k),j=i>=0?i:num;
+  if(j>=0&&Q&&!Q.done){selectChoice(j);e.preventDefault();return}
+  if(e.key==='Enter'){
+    if(e.target.closest('button')&&!e.target.closest('.choice'))return;
+    if(Q&&!Q.done&&Q.selected!=null){submit(false);e.preventDefault()}
+    else if(Q&&Q.done){newQuestion();e.preventDefault()}
+  }
+});
+
+renderPicker();renderStats();newQuestion();
+</script>
+
+</body></html>
